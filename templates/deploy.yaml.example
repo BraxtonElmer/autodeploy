@@ -1,0 +1,26 @@
+# deploy.yaml — commit this file to your repo root
+# autodeploy reads it on every webhook push
+
+# branch to watch — pushes to other branches are ignored
+branch: main
+
+# build commands run in order before the restart
+# omit the entire 'build' block if you have no build step
+build:
+  - npm install --production
+  - npm run build
+
+# command to restart your app after a successful build
+restart:
+  command: pm2 restart myapp
+
+# optional: HTTP health check after restart
+# autodeploy will retry up to 'retries' times, waiting 5s between each
+health_check:
+  url: http://localhost:3000/health
+  timeout: 30   # seconds per attempt
+  retries: 3
+
+# if any step fails, reset to the previous commit and re-run restart
+rollback:
+  on_failure: true
