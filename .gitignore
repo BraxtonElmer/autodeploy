@@ -1,0 +1,31 @@
+# env and secrets
+.env
+.env.*
+
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.eggs/
+dist/
+build/
+*.egg
+
+# virtual env
+.venv/
+venv/
+env/
+
+# autodeploy runtime
+*.jsonl
+autodeploy.service
+
+# editors
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
